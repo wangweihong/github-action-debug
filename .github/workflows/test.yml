@@ -1,6 +1,8 @@
 
 name: deploy
 on:
+  push:
+  pull_request:
 jobs:
   # for dump test
   # https://stackoverflow.com/questions/67503656/echo-github-action-environment-variables
