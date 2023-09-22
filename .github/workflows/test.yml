@@ -3,6 +3,8 @@ name: deploy
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
 jobs:
   # for dump test
   # https://stackoverflow.com/questions/67503656/echo-github-action-environment-variables
@@ -36,3 +38,17 @@ jobs:
 
       - name: Show default environment variables
         run: env
+
+  # 打印变更的文件
+  check-file-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get changed files using defaults
+        id: changed-files
+        uses: tj-actions/changed-files@v39
+      - name: List all added files
+        run: |
+          echo "${{ steps.changed-files.output.all_changed_files_count }} files has changed."
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+             echo "$file was modified."
+          done
