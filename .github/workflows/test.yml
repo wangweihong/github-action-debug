@@ -45,9 +45,9 @@ jobs:
     steps:
       # changed-files依赖于checkout
       - uses: actions/checkout@v4
-          with:
-            # 必须设置为0或者2
-            fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+        with:
+        # 必须设置为0或者2
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
       - name: Get changed files using defaults
         id: changed-files
